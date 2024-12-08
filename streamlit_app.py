@@ -82,9 +82,9 @@ st.markdown("""
 # Header
 st.markdown("<h1>📊 Dashboard de Predicción de Ventas</h1>", unsafe_allow_html=True)
 
-# Data preparation (same as before)
-meses = np.array([[10], [11]])
-ventas = np.array([480, 520])
+# Data preparation
+meses = np.array([[8], [9], [10], [11]])
+ventas = np.array([410, 480, 530, 580])
 modelo = LinearRegression()
 modelo.fit(meses, ventas)
 prediccion_diciembre = modelo.predict(np.array([[12]]))[0]
@@ -115,29 +115,53 @@ categorias = {
 
 # Datos de productos más vendidos
 productos_top = {
+    'Agosto': [
+        {'Producto': 'Teclado Mecánico RGB', 'Unidades': 12, 'Ingresos': 3006},
+        {'Producto': 'Refrigeradora Inverter', 'Unidades': 10, 'Ingresos': 19000},
+        {'Producto': 'Parlante Bluetooth Portátil', 'Unidades': 8, 'Ingresos': 967.92},
+        {'Producto': 'Afeitadora Eléctrica', 'Unidades': 7, 'Ingresos': 595},
+        {'Producto': 'Drone Profesional 4K', 'Unidades': 6, 'Ingresos': 9004.5},
+        {'Producto': 'Tablet 10 pulgadas', 'Unidades': 5, 'Ingresos': 3753},
+        {'Producto': 'Monitor 24 pulgadas', 'Unidades': 4, 'Ingresos': 1800},
+        {'Producto': 'Deshumidificador Portátil', 'Unidades': 3, 'Ingresos': 1200.6},
+        {'Producto': 'Tostadora Eléctrica', 'Unidades': 2, 'Ingresos': 130},
+        {'Producto': 'Bicicleta Estática', 'Unidades': 1, 'Ingresos': 950.5}
+    ],
+    'Septiembre': [
+        {'Producto': 'Impresora Multifuncional', 'Unidades': 14, 'Ingresos': 4200},
+        {'Producto': 'Microondas 800W', 'Unidades': 12, 'Ingresos': 2162.4},
+        {'Producto': 'Cámara de Seguridad WiFi', 'Unidades': 10, 'Ingresos': 2500},
+        {'Producto': 'Batidora de Mano', 'Unidades': 9, 'Ingresos': 630},
+        {'Producto': 'Audífonos Inalámbricos', 'Unidades': 8, 'Ingresos': 960},
+        {'Producto': 'Aspiradora Robot', 'Unidades': 7, 'Ingresos': 3500},
+        {'Producto': 'Cafetera de Cápsulas', 'Unidades': 6, 'Ingresos': 900},
+        {'Producto': 'Taladro Inalámbrico', 'Unidades': 5, 'Ingresos': 1150},
+        {'Producto': 'Mesa de Centro Moderna', 'Unidades': 4, 'Ingresos': 1400},
+        {'Producto': 'Ventilador de Torre', 'Unidades': 3, 'Ingresos': 330}
+    ],
     'Octubre': [
-        {'Producto': 'iPhone 13', 'Unidades': 15, 'Ingresos': 15000},
-        {'Producto': 'Samsung TV 55"', 'Unidades': 12, 'Ingresos': 9600},
-        {'Producto': 'PlayStation 5', 'Unidades': 10, 'Ingresos': 5000},
-        {'Producto': 'MacBook Air', 'Unidades': 8, 'Ingresos': 8800},
-        {'Producto': 'Xiaomi Mi 11', 'Unidades': 7, 'Ingresos': 3500},
-        {'Producto': 'Samsung Galaxy S21', 'Unidades': 6, 'Ingresos': 5400},
-        {'Producto': 'Nintendo Switch', 'Unidades': 5, 'Ingresos': 1500},
-        {'Producto': 'Sony WH-1000XM4', 'Unidades': 4, 'Ingresos': 1200},
-        {'Producto': 'Xbox Series X', 'Unidades': 3, 'Ingresos': 1500},
-        {'Producto': 'Dell XPS 13', 'Unidades': 2, 'Ingresos': 2400}
+        {'Producto': 'Smartwatch Deportivo', 'Unidades': 15, 'Ingresos': 4500},
+        {'Producto': 'Cámara Réflex 24MP', 'Unidades': 12, 'Ingresos': 30000},
+        {'Producto': 'Aire Acondicionado Portátil', 'Unidades': 10, 'Ingresos': 12009.9},
+        {'Producto': 'Proyector HD', 'Unidades': 8, 'Ingresos': 6806},
+        {'Producto': 'Cocina de Inducción', 'Unidades': 7, 'Ingresos': 4692.1},
+        {'Producto': 'Plancha a Vapor', 'Unidades': 6, 'Ingresos': 543},
+        {'Producto': 'Smart TV 55 pulgadas', 'Unidades': 5, 'Ingresos': 15000},
+        {'Producto': 'Freidora de Aire', 'Unidades': 4, 'Ingresos': 1000},
+        {'Producto': 'Reloj Inteligente Niños', 'Unidades': 3, 'Ingresos': 452.25},
+        {'Producto': 'Juego de Ollas Antiadherentes', 'Unidades': 2, 'Ingresos': 640}
     ],
     'Noviembre': [
-        {'Producto': 'iPhone 13', 'Unidades': 18, 'Ingresos': 18000},
-        {'Producto': 'Samsung TV 55"', 'Unidades': 14, 'Ingresos': 11200},
-        {'Producto': 'iPad Pro', 'Unidades': 12, 'Ingresos': 9600},
-        {'Producto': 'MacBook Air', 'Unidades': 10, 'Ingresos': 11000},
-        {'Producto': 'Google Pixel 6', 'Unidades': 8, 'Ingresos': 5600},
-        {'Producto': 'LG OLED TV 65"', 'Unidades': 7, 'Ingresos': 14000},
-        {'Producto': 'Nintendo Switch', 'Unidades': 6, 'Ingresos': 1800},
-        {'Producto': 'Bose QuietComfort', 'Unidades': 5, 'Ingresos': 1500},
-        {'Producto': 'Xbox Series X', 'Unidades': 4, 'Ingresos': 2000},
-        {'Producto': 'Lenovo ThinkPad X1', 'Unidades': 3, 'Ingresos': 4500}
+        {'Producto': 'Laptop Ultrabook', 'Unidades': 18, 'Ingresos': 75600},
+        {'Producto': 'Cámara de Video HD', 'Unidades': 14, 'Ingresos': 7700},
+        {'Producto': 'Colchón Ortopédico', 'Unidades': 12, 'Ingresos': 8400},
+        {'Producto': 'Mouse Gaming RGB', 'Unidades': 10, 'Ingresos': 809.9},
+        {'Producto': 'Escritorio Ajustable', 'Unidades': 8, 'Ingresos': 4000},
+        {'Producto': 'Kit de Destornilladores', 'Unidades': 7, 'Ingresos': 280},
+        {'Producto': 'Máquina de Coser Portátil', 'Unidades': 6, 'Ingresos': 2100},
+        {'Producto': 'Auriculares Over-Ear', 'Unidades': 5, 'Ingresos': 1250},
+        {'Producto': 'Calentador de Agua Eléctrico', 'Unidades': 4, 'Ingresos': 720},
+        {'Producto': 'Ventilador de Pared', 'Unidades': 3, 'Ingresos': 361.5}
     ]
 }
 
@@ -160,9 +184,11 @@ with col1:
     st.markdown("<h2>📈 Datos Históricos</h2>", unsafe_allow_html=True)
     col1_hist, col2_hist = st.columns(2)
     with col1_hist:
-        st.metric("Octubre", f"${ventas[0]:,.0f}")
+        st.metric("Agosto", f"${ventas[0]:,.0f}")
+        st.metric("Octubre", f"${ventas[2]:,.0f}")
     with col2_hist:
-        st.metric("Noviembre", f"${ventas[1]:,.0f}")
+        st.metric("Septiembre", f"${ventas[1]:,.0f}")
+        st.metric("Noviembre", f"${ventas[3]:,.0f}")
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Model Settings Card
@@ -185,7 +211,7 @@ with col2:
     fig = go.Figure()
     
     fig.add_trace(go.Scatter(
-        x=[10, 11],
+        x=[8, 9, 10, 11],
         y=ventas,
         mode='lines+markers',
         name='Histórico',
@@ -210,8 +236,8 @@ with col2:
         height=400,
         xaxis=dict(
             title='Mes',
-            ticktext=['Octubre', 'Noviembre', 'Diciembre'],
-            tickvals=[10, 11, 12],
+            ticktext=['Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            tickvals=[8, 9, 10, 11, 12],
             gridcolor='rgba(160,174,192,0.2)'
         ),
         yaxis=dict(
@@ -250,9 +276,25 @@ st.markdown("</div>", unsafe_allow_html=True)
 # Tabla de productos más vendidos
 st.markdown("<div class='dashboard-card'>", unsafe_allow_html=True)
 st.markdown("<h2>🏆 Top 10 Productos Más Vendidos</h2>", unsafe_allow_html=True)
-tab1, tab2 = st.tabs(["Octubre", "Noviembre"])
+tab1, tab2, tab3, tab4 = st.tabs(["Agosto", "Septiembre", "Octubre", "Noviembre"])
 
 with tab1:
+    df_agosto = pd.DataFrame(productos_top['Agosto'])
+    df_agosto.index = range(1, len(df_agosto) + 1)  # Índice desde 1
+    st.table(df_agosto.style.format({
+        'Ingresos': '${:,.0f}',
+        'Unidades': '{:,.0f}'
+    }))
+
+with tab2:
+    df_septiembre = pd.DataFrame(productos_top['Septiembre'])
+    df_septiembre.index = range(1, len(df_septiembre) + 1)  # Índice desde 1
+    st.table(df_septiembre.style.format({
+        'Ingresos': '${:,.0f}',
+        'Unidades': '{:,.0f}'
+    }))
+
+with tab3:
     df_octubre = pd.DataFrame(productos_top['Octubre'])
     df_octubre.index = range(1, len(df_octubre) + 1)  # Índice desde 1
     st.table(df_octubre.style.format({
@@ -260,7 +302,7 @@ with tab1:
         'Unidades': '{:,.0f}'
     }))
 
-with tab2:
+with tab4:
     df_noviembre = pd.DataFrame(productos_top['Noviembre'])
     df_noviembre.index = range(1, len(df_noviembre) + 1)  # Índice desde 1
     st.table(df_noviembre.style.format({
